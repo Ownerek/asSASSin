@@ -1,0 +1,78 @@
+@import './variables';
+@import './mixins';
+
+@include createNumbered($column-quantity, 'clmn'){
+  position: relative;
+  float: left;
+  min-height: 1px;
+  padding-left:15px;
+  padding-right:15px;
+}
+
+//Columns
+
+@each $media, $size in (480px, 'xs'),
+        (768px, 'sm'),
+        (980px, 'md'),
+        (1200px, 'lg') {
+  @media (min-width:$media) {
+    @for $count from 1 through $column-quantity {
+      .clmn-#{$size}-#{$count} {
+        @include columns($count);
+
+      }
+    }
+    .container{
+      @if $size != 'xs'{
+        width:$media - 30px;
+      } @else{
+        width:$media;
+      }
+    }
+  }
+}
+
+//Offsets
+@each $media, $size in (480px, 'xs'),
+        (768px, 'sm'),
+        (980px, 'md'),
+        (1200px, 'lg') {
+  @media (min-width:$media) {
+    @for $count from 0 through $column-quantity {
+      .clmn-#{$size}-offset-#{$count} {
+        @include column-offset($count);
+      }
+    }
+
+  }
+}
+
+.container{
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+
+  &:before, &:after{
+    display: table;
+    content: " ";
+    clear: both;
+  }
+}
+
+.container-full-width{
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.row{
+  margin-left: -15px;
+  margin-right: -15px;
+  &:before, &:after{
+    display: table;
+    content: " ";
+    clear: both;
+  }
+}
