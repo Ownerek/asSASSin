@@ -1,0 +1,27 @@
+@import "./variables";
+
+@mixin columns($columns){
+  width: percentage($columns / $column-quantity);
+}
+
+@mixin column-offset($columns){
+  margin-left: percentage($columns / $column-quantity);
+}
+
+
+@mixin fonts($style, $variant, $weight, $size, $line-height, $font-family...){
+  font: $style, $variant, $weight, $size, $line-height, $font-family;
+}
+
+
+@mixin createNumbered($num, $className){
+  $foo : '';
+  @each $size in 'xs' 'sm' 'md' 'lg'{
+    @for $i from 1 through $num {
+      $foo : $foo + '.' + $className + '-' + $size + '-' + $i + ', ';
+    }
+  }
+  #{$foo} {
+    @content;
+  }
+}

@@ -1,0 +1,13 @@
+//-----------------
+//  VARIABLES
+//-------------------
+$context: 1080 !default;
+$column-quantity: 12 !default;
+
+//breakpoints
+$xs:480px;
+$sm:768px;
+$md:920px;
+$lg:1200px;
+
+$medias: $xs, $sm, $md, $lg;
