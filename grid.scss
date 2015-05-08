@@ -17,7 +17,7 @@
         (1200px, 'lg') {
   @media (min-width:$media) {
     @for $count from 1 through $column-quantity {
-      .clmn-#{$size}-#{$count} {
+      .cl-#{$size}-#{$count} {
         @include columns($count);
 
       }
